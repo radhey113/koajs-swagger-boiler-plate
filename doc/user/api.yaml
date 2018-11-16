@@ -1,0 +1,201 @@
+tags:
+  - name: User
+    description: CRUD operations for user 
+paths:
+  /user:
+    get:
+      operationId: get_category
+      summary: Fetch categories
+      tags:
+        - User
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          type: string
+          description: Enter The Authentication Token
+          required: true
+      responses:
+        "200":
+          description: Successfully fetched categories
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: number
+                  description: Category ID
+                parentId:
+                  type: number
+                  description: ID of another category
+                communicationHierarchyId:
+                  type: number
+                  description: Communication hierarchy ID
+                name:
+                  type: string
+                  description: Category name
+                status:
+                  type: string
+                  description: Category status
+                description:
+                  type: string
+                  description: Category description
+                icon:
+                  type: string
+                  description: Category icon
+        "400":
+          description: >-
+            "Invalid request parameters
+             Could be:
+               * Missing required fields"
+
+    post:
+      operationId: create_category
+      summary: Create a category
+      tags:
+        - User
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          type: string
+          description: Enter The Authentication Token
+          required: true
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              parentId:
+                type: number
+                description: Optional ID of another category
+              communicationHierarchyId:
+                type: number
+                description: Optional communication hierarchy ID
+              name:
+                type: string
+                description: Required category name
+              status:
+                type: string
+                description: Required category status
+              description:
+                type: string
+                description: Required category description
+              icon:
+                type: string
+                description: Required category icon
+            required:
+                - icon
+                - description
+                - status
+                - name
+                - communicationHierarchyId
+                - parentId
+      responses:
+        "200":
+          description: Successfully created new category
+          schema:
+            type: object
+            properties:
+              ok:
+                type: boolean
+        "400":
+          description: >-
+            "Invalid request parameters
+             Could be:
+               * Missing required fields"
+  /user/{id}:
+    put:
+      operationId: update_category
+      summary: Update a category
+      tags:
+        - User
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          type: string
+          description: Enter The Authentication Token
+          required: true  
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              parentId:
+                type: number
+                description: Optional ID of another category
+              communicationHierarchyId:
+                type: number
+                description: Optional communication hierarchy ID
+              name:
+                type: string
+                description: Required category name
+              status:
+                type: string
+                description: Required category status
+              description:
+                type: string
+                description: Required category description
+              icon:
+                type: string
+                description: Required category icon
+            required:
+                - icon
+                - description
+                - status
+                - name
+                - communicationHierarchyId
+                - parentId
+      responses:
+        "200":
+          description: Successfully updated a category
+          schema:
+            type: object
+            properties:
+              ok:
+                type: boolean
+        "400":
+          description: >-
+            "Invalid request parameters
+             Could be:
+               * Missing required fields"
+    delete:
+      operationId: delete_category
+      summary: Delete a category
+      tags:
+        - User
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          type: string
+          description: Enter The Authentication Token
+          required: true  
+        - in: path
+          name: id
+          required: true
+      responses:
+        "200":
+          description: Successfully removed category
+          schema:
+            type: object
+            properties:
+              ok:
+                type: boolean
+        "400":
+          description: >-
+            "Invalid request parameters
+             Could be:
+               * Missing required fields"        

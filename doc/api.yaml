@@ -1,0 +1,10 @@
+swagger: '2.0'
+info:
+  description: >-
+    <Name Of The Project Here>
+  version: 1.0.0
+  title: Demo Documentation Service
+host: https://localhost:4070
+basePath: /
+schemes:
+  - http
