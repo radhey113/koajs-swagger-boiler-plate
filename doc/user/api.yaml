@@ -86,7 +86,13 @@ paths:
                 type: object
                 properties:
                   username:
-                    type: string    
+                    type: string
+                    description: Username
+                  updatedAt:
+                    type: Last Updated Date
+                  createdAt: 
+                    type: string
+                    description: Created Date
         "400":
           description: >-
             "Invalid request parameters

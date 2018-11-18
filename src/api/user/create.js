@@ -5,6 +5,8 @@ async function create(ctx, next) {
   try {
     let result;
     result = await createCategory(ctx.request.body);
+    delete result.__v;
+
     ctx.status = 200;
     ctx.body = {
       ok: true,
@@ -14,15 +16,15 @@ async function create(ctx, next) {
     };
   } catch (e) {
     log.error(e);
-    console.log(JSON.stringify(e));
+
     let body = {
       message: e.message,
       errorCode: e.code,
       status: 402,
     };
+
     ctx.status = 402;
     ctx.body = body;
-    // ctx.throw(400, 'Bad request');
   }
 
   await next();
