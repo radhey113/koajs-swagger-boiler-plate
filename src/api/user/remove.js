@@ -1,18 +1,29 @@
+'use strict';
+
 const log = require('../../log');
-const removeCategory = require('../../services/user/remove');
-// const { withSqlConnection } = require('../../common/sql');
+const removeUser = require('../../services/user/remove');
 
 async function remove(ctx, next) {
   try {
-    await withSqlConnection(async () => {
-      await removeCategory(ctx.params.id);
-    });
+    let result;
+    result = await removeUser(ctx.params.id);
 
     ctx.status = 200;
-    ctx.body = { ok: true };
+    ctx.body = {
+      ok: true,
+      message: 'Removed Successfully',
+      status: 200,
+      data: result,
+    };
   } catch (e) {
     log.error(e);
-    ctx.throw(400, 'Bad request');
+    ctx.status = 400;
+    let errorData = {
+      message: e.message,
+      staus: 400,
+      errorCode: e.code,
+    };
+    ctx.body = errorData;
   }
 
   await next();

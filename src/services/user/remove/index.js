@@ -1,11 +1,13 @@
-// const { executeFile } = require('../../../common/sql');
+'use strict';
 
-async function removeCategory(id) {
+const assert = require('assert');
+
+async function removeUser(id) {
   const values = { id };
-
-  await executeFile(require.resolve('./removeCategory.sql'), values);
-
-  return;
+  assert.ok(id, 'Id is required');
+  return {
+    username: 'Demo',
+  };
 }
 
-module.exports = removeCategory;
+module.exports = removeUser;

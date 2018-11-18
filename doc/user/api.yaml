@@ -5,7 +5,7 @@ paths:
   /user:
     get:
       operationId: get_category
-      summary: Fetch categories
+      summary: Fetch user
       tags:
         - User
       produces:
@@ -24,27 +24,20 @@ paths:
             items:
               type: object
               properties:
-                id:
-                  type: number
-                  description: User ID
-                parentId:
-                  type: number
-                  description: ID of another User
-                communicationHierarchyId:
-                  type: number
-                  description: Communication hierarchy ID
-                name:
+                ok:
+                  type: boolean
+                  description: If success then true otherwise false
+                message:
                   type: string
-                  description: User name
+                  description: Custome message is here  
                 status:
-                  type: string
-                  description: User status
-                description:
-                  type: string
-                  description: User description
-                icon:
-                  type: string
-                  description: User icon
+                  type: number
+                  description: Response status
+                data: 
+                  type: object
+                  properties:
+                    count:
+                      type: number  
         "400":
           description: >-
             "Invalid request parameters
@@ -52,7 +45,7 @@ paths:
                * Missing required fields"
 
     post:
-      operationId: create_category
+      operationId: create_user
       summary: Create a user
       tags:
         - User
@@ -72,31 +65,11 @@ paths:
           schema:
             type: object
             properties:
-              parentId:
-                type: number
+              username:
+                type: string
                 description: Optional ID of another user
-              communicationHierarchyId:
-                type: number
-                description: Optional communication hierarchy ID
-              name:
-                type: string
-                description: Required user name
-              status:
-                type: string
-                description: Required user status
-              description:
-                type: string
-                description: Required user description
-              icon:
-                type: string
-                description: Required user icon
             required:
-                - icon
-                - description
-                - status
-                - name
-                - communicationHierarchyId
-                - parentId
+                - username
       responses:
         "200":
           description: Successfully created new user
@@ -105,6 +78,15 @@ paths:
             properties:
               ok:
                 type: boolean
+              message:
+                type: string  
+              status:
+                type: boolean
+              data: 
+                type: object
+                properties:
+                  username:
+                    type: string    
         "400":
           description: >-
             "Invalid request parameters
@@ -132,31 +114,11 @@ paths:
           schema:
             type: object
             properties:
-              parentId:
-                type: number
+              username:
+                type: string
                 description: Optional ID of another user
-              communicationHierarchyId:
-                type: number
-                description: Optional communication hierarchy ID
-              name:
-                type: string
-                description: Required user name
-              status:
-                type: string
-                description: Required user status
-              description:
-                type: string
-                description: Required user description
-              icon:
-                type: string
-                description: Required user icon
             required:
-                - icon
-                - description
-                - status
-                - name
-                - communicationHierarchyId
-                - parentId
+                - username
       responses:
         "200":
           description: Successfully updated a user
@@ -165,6 +127,15 @@ paths:
             properties:
               ok:
                 type: boolean
+              message:
+                type: string  
+              status:
+                type: boolean
+              data: 
+                type: object
+                properties:
+                  username:
+                    type: string
         "400":
           description: >-
             "Invalid request parameters
@@ -194,6 +165,15 @@ paths:
             properties:
               ok:
                 type: boolean
+              message:
+                type: string  
+              status:
+                type: boolean
+              data: 
+                type: object
+                properties:
+                  username:
+                    type: string
         "400":
           description: >-
             "Invalid request parameters

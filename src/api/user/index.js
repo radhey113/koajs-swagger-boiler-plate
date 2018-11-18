@@ -1,3 +1,5 @@
+'use strict';
+
 const Router = require('koa-router');
 
 const get = require('./get');
@@ -9,10 +11,15 @@ const categoryRouter = new Router({
   prefix: '/user',
 });
 
-categoryRouter.get('/', get);
-categoryRouter.post('/', create);
+categoryRouter.get(`/`, middlewareOperation, get);
+categoryRouter.post(`/`, middlewareOperation, create);
 
-categoryRouter.delete('/:id', remove);
-categoryRouter.put('/:id', update);
+categoryRouter.delete(`/:id`, middlewareOperation, remove);
+categoryRouter.put(`/:id`, middlewareOperation, update);
+
+async function middlewareOperation(req, next) {
+  console.log(`middleware logic here...`);
+  await next();
+}
 
 module.exports = categoryRouter;

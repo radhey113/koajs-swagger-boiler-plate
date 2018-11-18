@@ -1,13 +1,12 @@
 {
-  "name": "eplus_api_notf",
+  "name": "koajs-demo-project",
   "version": "1.0.0",
-  "description": "Notification API for EPlus",
+  "description": "Demo project for Koa JS",
   "main": "./src/bin/start.js",
   "scripts": {
     "start": "node $NODE_DEBUG_OPTION src/bin/start.js",
     "start:dev": "nodemon --inspect src/bin/start.js",
     "start:dev:debug": "nodemon --inspect src/bin/start.js --nolazy --inspect-brk=9229",
-    "deploy": "node $NODE_DEBUG_OPTION src/bin/deploy.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src",
     "pretty": "prettier --write ./src/**/*.js",

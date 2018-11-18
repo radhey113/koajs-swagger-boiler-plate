@@ -1,18 +1,30 @@
+'use strict';
+
 const log = require('../../log');
 const updateCategory = require('../../services/user/update');
-// const { withSqlConnection } = require('../../common/sql');
 
 async function remove(ctx, next) {
   try {
-    await withSqlConnection(async () => {
-      await updateCategory(ctx.params.id, ctx.request.body);
-    });
+    let result;
+    result = await updateCategory(ctx.params.id, ctx.request.body);
 
     ctx.status = 200;
-    ctx.body = { ok: true };
+    ctx.body = {
+      ok: true,
+      message: 'Updated successfully',
+      status: true,
+      data: result,
+    };
   } catch (e) {
     log.error(e);
-    ctx.throw(400, 'Bad request');
+    ctx.status = 400;
+
+    let errorData = {
+      message: e.message,
+      errorCode: e.code,
+      status: 400,
+    };
+    ctx.body = errorData;
   }
 
   await next();
