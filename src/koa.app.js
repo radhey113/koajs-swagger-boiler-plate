@@ -27,18 +27,18 @@ const runApp = async () => {
 
   // Start applicatoin
   const start = application.initializeLayer('WebServer', {
-    initialize() {  
+    initialize() {
       return new Promise((resolve, reject) => {
         const server = app.listen(conf.PORT, error => {
           if (error) {
             return reject(error);
           }
 
-          log.info(`EPlus Notification API started at port ${conf.PORT}`);
+          log.info(` Server started at port ${conf.PORT}`);
           resolve(server);
         });
       });
-    }
+    },
   });
 
   start();

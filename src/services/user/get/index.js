@@ -1,9 +1,10 @@
-// const { executeFile } = require('../../../common/sql');
+'use strict';
 
-async function getCategories() {
-  const result = await executeFile(require.resolve('./getCategories.sql'));
-
-  return result.rows;
+async function getUser() {
+  return {
+    ok: true,
+    status: 200,
+  };
 }
 
-module.exports = getCategories;
+module.exports = getUser;

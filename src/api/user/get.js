@@ -1,16 +1,12 @@
 const log = require('../../log');
-const getCategory = require('../../services/user/get');
-// const { withSqlConnection } = require('../../common/sql');
+const getUser = require('../../services/user/get');
 
-async function get(ctx, next) {
+async function get(ctx, here, next) {
   try {
-    let results;
-    await withSqlConnection(async () => {
-      results = await getCategory(ctx.request.query);
-    });
+    let result = await getUser();
 
     ctx.status = 200;
-    ctx.body = results;
+    ctx.body = result;
   } catch (e) {
     log.error(e);
     ctx.throw(400, 'Bad request');

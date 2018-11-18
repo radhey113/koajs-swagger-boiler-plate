@@ -4,6 +4,7 @@ const createCategory = require('../../services/user/create');
 
 async function create(ctx, next) {
   try {
+    console.log(ctx.query, ctx.body, ctx.params, ctx.param);
     await withSqlConnection(async () => {
       await createCategory(ctx.request.body);
     });

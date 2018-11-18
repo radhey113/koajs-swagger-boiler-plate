@@ -26,25 +26,25 @@ paths:
               properties:
                 id:
                   type: number
-                  description: Category ID
+                  description: User ID
                 parentId:
                   type: number
-                  description: ID of another category
+                  description: ID of another User
                 communicationHierarchyId:
                   type: number
                   description: Communication hierarchy ID
                 name:
                   type: string
-                  description: Category name
+                  description: User name
                 status:
                   type: string
-                  description: Category status
+                  description: User status
                 description:
                   type: string
-                  description: Category description
+                  description: User description
                 icon:
                   type: string
-                  description: Category icon
+                  description: User icon
         "400":
           description: >-
             "Invalid request parameters
@@ -53,7 +53,7 @@ paths:
 
     post:
       operationId: create_category
-      summary: Create a category
+      summary: Create a user
       tags:
         - User
       consumes:
@@ -74,22 +74,22 @@ paths:
             properties:
               parentId:
                 type: number
-                description: Optional ID of another category
+                description: Optional ID of another user
               communicationHierarchyId:
                 type: number
                 description: Optional communication hierarchy ID
               name:
                 type: string
-                description: Required category name
+                description: Required user name
               status:
                 type: string
-                description: Required category status
+                description: Required user status
               description:
                 type: string
-                description: Required category description
+                description: Required user description
               icon:
                 type: string
-                description: Required category icon
+                description: Required user icon
             required:
                 - icon
                 - description
@@ -99,7 +99,7 @@ paths:
                 - parentId
       responses:
         "200":
-          description: Successfully created new category
+          description: Successfully created new user
           schema:
             type: object
             properties:
@@ -112,8 +112,8 @@ paths:
                * Missing required fields"
   /user/{id}:
     put:
-      operationId: update_category
-      summary: Update a category
+      operationId: update_user
+      summary: Update a user
       tags:
         - User
       consumes:
@@ -134,22 +134,22 @@ paths:
             properties:
               parentId:
                 type: number
-                description: Optional ID of another category
+                description: Optional ID of another user
               communicationHierarchyId:
                 type: number
                 description: Optional communication hierarchy ID
               name:
                 type: string
-                description: Required category name
+                description: Required user name
               status:
                 type: string
-                description: Required category status
+                description: Required user status
               description:
                 type: string
-                description: Required category description
+                description: Required user description
               icon:
                 type: string
-                description: Required category icon
+                description: Required user icon
             required:
                 - icon
                 - description
@@ -159,7 +159,7 @@ paths:
                 - parentId
       responses:
         "200":
-          description: Successfully updated a category
+          description: Successfully updated a user
           schema:
             type: object
             properties:
@@ -171,8 +171,8 @@ paths:
              Could be:
                * Missing required fields"
     delete:
-      operationId: delete_category
-      summary: Delete a category
+      operationId: delete_user
+      summary: Delete a user
       tags:
         - User
       produces:
@@ -188,7 +188,7 @@ paths:
           required: true
       responses:
         "200":
-          description: Successfully removed category
+          description: Successfully removed user
           schema:
             type: object
             properties:

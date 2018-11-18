@@ -14,15 +14,14 @@
     "precommit": "pretty-quick --staged"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ed-admin/eplus_api_notf.git"
+    "type": "git"
   },
-  "author": "Mihael Vuherer",
+  "author": "Radhey Shyam",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ed-admin/eplus_api_notf/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/ed-admin/eplus_api_notf#readme",
+  "homepage": "",
   "dependencies": {
     "@koa/cors": "^2.2.1",
     "apollo-cache-inmemory": "^1.1.12",
