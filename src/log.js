@@ -1,7 +1,5 @@
 const winston = require('winston');
 
-const { LOG_LEVEL } = require('./conf');
-
 winston.configure({
   transports: [
     new winston.transports.Console({
@@ -9,7 +7,7 @@ winston.configure({
       timestamp: true,
       prettyPrint: true,
       json: false,
-      level: LOG_LEVEL,
+      level: 'info',
     }),
   ],
 });

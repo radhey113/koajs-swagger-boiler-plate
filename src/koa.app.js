@@ -6,7 +6,7 @@ const serve = require(`koa-static-server`);
 const cors = require(`@koa/cors`);
 
 const application = require(`./application`);
-const conf = require(`./conf`);
+const conf = require(`./common`);
 const log = require(`./log`);
 const dbConnection = require(`./common/db`).dbConnection;
 
@@ -14,6 +14,7 @@ const categoryRouter = require(`./api/user`);
 
 // Swagger documentation:
 const { createSwaggerRouter } = require(`./api/swagger-ui`);
+const dbConfig = conf.db.dbConfig();
 
 const runApp = async () => {
   const app = new Koa();
@@ -31,13 +32,13 @@ const runApp = async () => {
   const start = application.initializeLayer(`WebServer`, {
     initialize() {
       return new Promise((resolve, reject) => {
-        const server = app.listen(conf.PORT, error => {
+        const server = app.listen(dbConfig.PORT, error => {
           dbConnection();
           if (error) {
             return reject(error);
           }
 
-          log.info(` Server started at port ${conf.PORT}`);
+          log.info(` Server started at port ${dbConfig.PORT}`);
           resolve(server);
         });
       });

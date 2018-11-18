@@ -4,7 +4,7 @@ info:
     <Name Of The Project Here>
   version: 1.0.0
   title: Demo Documentation Service
-host: localhost:4070
+host: localhost:4001
 basePath: /
 schemes:
   - http
