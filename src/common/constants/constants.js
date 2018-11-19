@@ -1,5 +1,10 @@
 'use strict';
 
+const APPLICATOIN_CONSTANTS = {
+  LEVEL: 'info',
+  PROJECT_NAME: 'Koa Demo',
+};
+
 const SUCCESS = {};
 
 const ERROR = {};
@@ -17,6 +22,7 @@ const CUSTOME_MSG = (MSG, CODE, ERROR_CODE) => {
 };
 
 module.exports = {
+  APPLICATOIN_CONSTANTS,
   SUCCESS,
   ERROR,
   NOTIFICATION,

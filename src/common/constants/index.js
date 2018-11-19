@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  CONSTANT: require('./constants'),
+  constants: require('./constants'),
 };

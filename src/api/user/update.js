@@ -1,7 +1,7 @@
 'use strict';
 
 const log = require('../../log');
-const updateCategory = require('../../services/user/update');
+const updateUserData = require('../../services/user/update');
 
 async function remove(ctx, next) {
   try {
