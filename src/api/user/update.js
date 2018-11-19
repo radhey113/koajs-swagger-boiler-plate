@@ -6,7 +6,7 @@ const updateCategory = require('../../services/user/update');
 async function remove(ctx, next) {
   try {
     let result;
-    result = await updateCategory(ctx.params.id, ctx.request.body);
+    result = await updateUserData(ctx.params.id, ctx.request.body);
 
     ctx.status = 200;
     ctx.body = {

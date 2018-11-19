@@ -4,7 +4,7 @@ tags:
 paths:
   /user:
     get:
-      operationId: get_category
+      operationId: get_user
       summary: Fetch user
       tags:
         - User
@@ -18,7 +18,7 @@ paths:
           required: true
       responses:
         "200":
-          description: Successfully fetched categories
+          description: Successfully fetched users
           schema:
             type: array
             items:
@@ -113,6 +113,9 @@ paths:
           in: header
           type: string
           description: Enter The Authentication Token
+          required: true  
+        - in: path
+          name: id
           required: true  
         - in: body
           name: body

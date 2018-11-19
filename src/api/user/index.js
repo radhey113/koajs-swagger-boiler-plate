@@ -7,19 +7,19 @@ const create = require('./create');
 const remove = require('./remove');
 const update = require('./update');
 
-const categoryRouter = new Router({
+const userRoutes = new Router({
   prefix: '/user',
 });
 
-categoryRouter.get(`/`, middlewareOperation, get);
-categoryRouter.post(`/`, middlewareOperation, create);
+userRoutes.get(`/`, middlewareOperation, get);
+userRoutes.post(`/`, middlewareOperation, create);
 
-categoryRouter.delete(`/:id`, middlewareOperation, remove);
-categoryRouter.put(`/:id`, middlewareOperation, update);
+userRoutes.delete(`/:id`, middlewareOperation, remove);
+userRoutes.put(`/:id`, middlewareOperation, update);
 
 async function middlewareOperation(req, next) {
   console.log(`middleware logic here...`);
   await next();
 }
 
-module.exports = categoryRouter;
+module.exports = userRoutes;

@@ -9,14 +9,7 @@ async function get(ctx, next) {
   try {
     let result = await getUser();
     ctx.status = 200;
-    ctx.body = {
-      ok: true,
-      message: 'Success',
-      status: 200,
-      data: {
-        count: 10,
-      },
-    };
+    ctx.body = result;
   } catch (e) {
     log.error(e);
     ctx.type = 'application/json';

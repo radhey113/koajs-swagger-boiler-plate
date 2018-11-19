@@ -1,10 +1,10 @@
 const log = require('../../log');
-const createCategory = require('../../services/user/create');
+const createUser = require('../../services/user/create');
 
 async function create(ctx, next) {
   try {
     let result;
-    result = await createCategory(ctx.request.body);
+    result = await createUser(ctx.request.body);
     delete result.__v;
 
     ctx.status = 200;

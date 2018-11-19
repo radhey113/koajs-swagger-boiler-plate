@@ -10,7 +10,7 @@ const conf = require(`./common`);
 const log = require(`./log`);
 const dbConnection = require(`./common/db`).dbConnection;
 
-const categoryRouter = require(`./api/user`);
+const userRoutes = require(`./api/user`);
 
 // Swagger documentation:
 const { createSwaggerRouter } = require(`./api/swagger-ui`);
@@ -21,8 +21,8 @@ const runApp = async () => {
 
   app.use(cors({ credentials: true }));
   app.use(koaBody());
-  app.use(categoryRouter.routes());
-  app.use(categoryRouter.allowedMethods());
+  app.use(userRoutes.routes());
+  app.use(userRoutes.allowedMethods());
 
   const swaggerRouter = await createSwaggerRouter();
   app.use(swaggerRouter);

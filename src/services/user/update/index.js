@@ -1,13 +1,12 @@
 'use strict';
 
 const assert = require('assert');
+const { User } = require('../../../models');
 
-async function updateCategory(id, body) {
+async function updateUserData(id, body) {
   assert.ok(body.username, 'Username is required');
-
-  return {
-    username: body.username,
-  };
+  let result = await User.update({ _id: id }, { $set: body }, { lean: true, new: true });
+  return { result };
 }
 
-module.exports = updateCategory;
+module.exports = updateUserData;
