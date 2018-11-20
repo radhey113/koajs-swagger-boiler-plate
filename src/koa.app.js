@@ -33,6 +33,7 @@ const runApp = async () => {
     initialize() {
       return new Promise((resolve, reject) => {
         const server = app.listen(dbConfig.PORT, error => {
+          console.log(`env variable = ${process.env.NODE_MONGODB_USER}`);
           dbConnection();
           if (error) {
             return reject(error);
