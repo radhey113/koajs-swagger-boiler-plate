@@ -4,12 +4,12 @@
   "description": "Demo project for Koa JS",
   "main": "./src/bin/start.js",
   "scripts": {
-    "start": "node $NODE_DEBUG_OPTION src/bin/start.js",
-    "start:dev": "nodemon --inspect src/bin/start.js",
-    "start:dev:debug": "nodemon --inspect src/bin/start.js --nolazy --inspect-brk=9229",
+    "start": "node $NODE_DEBUG_OPTION index.js",
+    "start:dev": "nodemon --inspect index.js",
+    "start:dev:debug": "nodemon --inspect index.js --nolazy --inspect-brk=9229",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src",
-    "pretty": "prettier --write ./src/**/*.js",
+    "pretty": "prettier --write ./*.js",
     "precommit": "pretty-quick --staged"
   },
   "repository": {
@@ -23,12 +23,6 @@
   "homepage": "",
   "dependencies": {
     "@koa/cors": "^2.2.1",
-    "apollo-cache-inmemory": "^1.1.12",
-    "apollo-client": "^2.2.8",
-    "apollo-link-context": "^1.0.7",
-    "apollo-link-error": "^1.0.7",
-    "apollo-link-http": "^1.5.3",
-    "apollo-server-koa": "^1.3.2",
     "async_hooks": "^1.0.0",
     "asyncctx": "^1.0.2",
     "aws-sdk": "^2.208.0",
@@ -45,7 +39,7 @@
     "husky": "^0.14.3",
     "json-schema-ref-parser": "^4.1.1",
     "jsonschema": "^1.2.2",
-    "koa": "^2.5.0",
+    "koa": "^2.6.2",
     "koa-body": "^2.5.0",
     "koa-router": "^7.4.0",
     "koa-static-server": "^1.3.4",

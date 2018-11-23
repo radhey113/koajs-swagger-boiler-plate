@@ -5,7 +5,6 @@ const koaBody = require(`koa-body`);
 const serve = require(`koa-static-server`);
 const cors = require(`@koa/cors`);
 
-const application = require(`./application`);
 const conf = require(`./common`);
 const log = require(`./log`);
 const dbConnection = require(`./common/db`).dbConnection;
@@ -29,22 +28,18 @@ const runApp = async () => {
   app.use(serve({ rootDir: `static`, rootPath: `/static` }));
 
   // Start applicatoin
-  const start = application.initializeLayer(`WebServer`, {
-    initialize() {
-      return new Promise((resolve, reject) => {
-        const server = app.listen(dbConfig.PORT, error => {
-          if (error) {
-            return reject(error);
-          }
-          dbConnection();
-          log.info(` Server started at port ${dbConfig.PORT}`);
-          resolve(server);
-        });
-      });
-    },
-  });
+  const startServer = () => {
+    app.listen(dbConfig.PORT, error => {
+      if (error) {
+        log.error(`Server Error:  ${error}`);
+        return;
+      }
+      dbConnection();
+      log.info(`Server started at port: ${dbConfig.PORT}`);
+    });
+  };
 
-  start();
+  startServer();
 };
 
 module.exports = { runApp };
